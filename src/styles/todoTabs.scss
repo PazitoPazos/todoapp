@@ -1,0 +1,50 @@
+.todo-tabs {
+  position: relative;
+
+  .todo-tabs-left,
+  .todo-tabs-right {
+    background-color: rgba(85, 85, 85, .3);
+    user-select: none;
+  }
+
+  .todo-tabs-left,
+  .todo-tabs-right {
+    position: absolute;
+    padding: .25rem .25rem;
+    top: -2rem;
+  }
+
+  .todo-tabs-left {
+    box-shadow: -1px -2px 4px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .todo-tabs-right {
+    right: 0;
+    box-shadow: 1px -2px 4px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.filters {
+  display: flex;
+
+  .filter-item {
+    border-right: 2px solid rgba(255, 255, 255, 0.57);
+    padding: 0 .75rem;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.filter-item:not(.active),
+.clear-completed {
+  &:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.57);
+
+    &:active {
+      color: rgba(255, 255, 255, 0.37);
+    }
+  }
+}

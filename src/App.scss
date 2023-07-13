@@ -1,0 +1,40 @@
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.app {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    top: -12rem;
+    left: 0;
+    right: 0;
+    font-size: 4rem;
+    text-align: center;
+  }
+}
+
+.todo-container {
+  background-color: rgba(85, 85, 85, .3);
+  display: grid;
+  margin: 10rem 0 0 0;
+  box-shadow:
+    0 2px 4px 0 rgba(255, 255, 255, 0.2),
+    0 25px 50px 0 rgba(255, 255, 255, 0.1);
+  word-wrap: break-word;    
+}
+
+.active {
+  color: rgba(255, 255, 255, 0.37);
+  font-weight: bold;
+}
+
+.toggle {
+  // appearance: none;
+  // opacity: 0;
+  height: 2.2rem;
+  width: 2.2rem;
+}

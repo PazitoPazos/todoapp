@@ -1,0 +1,49 @@
+.todo-item {
+  position: relative;
+  margin-bottom: .5rem;
+
+  &:hover {
+    .destroy {
+      display: block;
+    }
+  }
+
+  &.completed label {
+    color: rgba(255, 255, 255, 0.57);
+    text-decoration: line-through;
+  }
+
+  label {
+    display: block;
+    line-height: 1.2;
+    padding: 1rem 1rem 1rem 1.6rem;
+    transition: color .4s;
+  }
+
+  .view {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .destroy {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: rgba(255, 0, 0, 0.57);
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    font-size: 1.6rem;
+
+    &::after {
+      content: 'X';
+    }
+
+    &:hover {
+      color: rgba(255, 0, 0, 0.87);
+    }
+  }
+}
