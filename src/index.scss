@@ -28,3 +28,28 @@ input {
   background-color: $primary-color;
   border: none;
 }
+
+input[type=checkbox] {
+  display: grid;
+  place-content: center;
+  appearance: none;
+  background-color: rgba(85, 85, 85, 0);
+  border: 0.2rem solid $text-color;
+  border-radius: 0.2rem;
+
+  &::before {
+    content: "";
+    height: 0.95rem;
+    width: 0.95rem;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+}
