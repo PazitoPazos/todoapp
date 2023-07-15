@@ -11,7 +11,7 @@ function TodoHeader ({ activeCount, filterSelected, handleFilterChange, onToggle
         onRemoveAllCompleted={onRemoveAllCompleted}
       />
       <NewTodo onToggleAll={onToggleAll} saveTodo={onAddTodo} />
-      <h3>Left {activeCount} todo/s</h3>
+      <h3>{activeCount} todo/s left</h3>
     </div>
   )
 }
