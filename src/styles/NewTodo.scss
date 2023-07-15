@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin: .8rem .8rem;
+  margin: .8rem 0;
 
   input[type=text] {
     display: block;
@@ -13,6 +13,7 @@
   }
 
   .add-todo-button {
+    cursor: pointer;
     position: absolute;
     display: flex;
     align-items: center;

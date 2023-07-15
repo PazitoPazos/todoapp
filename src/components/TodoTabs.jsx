@@ -1,24 +1,50 @@
 import '../styles/todoTabs.scss'
 
-function TodoTabs () {
+function TodoTabs ({ filterSelected, onFilterChange, onRemoveAllCompleted }) {
+  const TODO_FILTERS = {
+    ALL: 'all',
+    ACTIVE: 'active',
+    COMPLETED: 'completed'
+  }
+
+  const FILTERS_BUTTONS = {
+    [TODO_FILTERS.ALL]: {
+      literal: 'All',
+      href: `#/filter=${TODO_FILTERS.ALL}`
+    },
+    [TODO_FILTERS.ACTIVE]: {
+      literal: 'Active',
+      href: `#/filter=${TODO_FILTERS.ACTIVE}`
+    },
+    [TODO_FILTERS.COMPLETED]: {
+      literal: 'Completed',
+      href: `#/filter=${TODO_FILTERS.COMPLETED}`
+    }
+  }
+
   return (
     <div className="todo-tabs">
       <div className="todo-tabs-left">
         <div className="filters">
-          <div className="filter-item active">
-            <span>All</span>
-          </div>
-          <div className="filter-item">
-            <span>Active</span>
-          </div>
-          <div className="filter-item">
-            <span>Completed</span>
-          </div>
+          {Object.entries(FILTERS_BUTTONS).map(([filter, { literal, href }]) => (
+            <div className='filter-item' key={filter}>
+              <a
+                href={href}
+                className={filterSelected === filter ? 'selected' : ''}
+                onClick={() => {
+                  onFilterChange(filter)
+                }}>{literal}</a>
+            </div>
+          ))}
         </div>
       </div>
       <div className='todo-tabs-right'>
         <div className="clear-completed">
-          <span>Clear completed</span>
+          <a
+            href='#/clear-completed'
+            onClick={() => {
+              onRemoveAllCompleted()
+            }}>Clear completed</a>
         </div>
       </div>
     </div>

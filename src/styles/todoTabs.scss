@@ -1,5 +1,6 @@
 .todo-tabs {
   position: relative;
+  margin: 0 -.8rem;
 
   .todo-tabs-left,
   .todo-tabs-right {
@@ -37,14 +38,12 @@
   }
 }
 
-.filter-item:not(.active),
-.clear-completed {
-  &:hover {
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.57);
+.selected {
+  cursor: default;
+  color: rgba(255, 255, 255, 0.37);
+  font-weight: bold;
 
-    &:active {
-      color: rgba(255, 255, 255, 0.37);
-    }
+  &:hover {
+    color: rgba(255, 255, 255, 0.37);
   }
 }

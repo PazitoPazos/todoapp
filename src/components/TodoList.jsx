@@ -6,7 +6,6 @@ function TodoList ({ todoList, onRemoveTodo, onToggleCompleted }) {
     <div className="todo-body">
       <ul className="todo-list">
         {todoList
-        // .filter((item) => item.completed === false)
           .map((todo) => (
             <li
               key={todo.id}

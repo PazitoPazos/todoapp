@@ -12,9 +12,11 @@ function TodoItem ({ id, title, completed, onRemoveTodo, onToggleCompleted }) {
         }}
       />
       <label>{title}</label>
-      <button className="destroy" onClick={() => {
-        onRemoveTodo(id)
-      }} />
+      <div className='destroy'>
+        <div className='button' onClick={() => {
+          onRemoveTodo(id)
+        }} />
+      </div>
     </div>
   )
 }

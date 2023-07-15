@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import './App.scss'
-import NewTodo from './components/NewTodo'
 import TodoList from './components/TodoList'
-import TodoTabs from './components/TodoTabs'
+import TodoHeader from './components/TodoHeader'
 
 const todos = [
   { id: '1', title: 'Learn React', completed: true },
@@ -12,6 +11,7 @@ const todos = [
 
 function App () {
   const [todoList, setTodoList] = useState(todos)
+  const [filterSelected, setFilterSelected] = useState('all')
 
   const handleRemove = (id) => {
     const newTodoList = todoList.filter((todo) => todo.id !== id)
@@ -44,18 +44,56 @@ function App () {
     setTodoList(newTodoList)
   }
 
+  const handleFilterChange = (filter) => {
+    setFilterSelected(filter)
+  }
+
+  const filteredTodos = todoList.filter((todo) => {
+    if (filterSelected === 'active') {
+      return !todo.completed
+    }
+
+    if (filterSelected === 'completed') {
+      return todo.completed
+    }
+
+    return todo
+  })
+  const activeCount = todoList.filter((todo) => !todo.completed).length
+
+  const handleRemoveAllCompleted = () => {
+    const activeTodoList = todoList.filter((todo) => !todo.completed)
+    setTodoList(activeTodoList)
+  }
+
+  const handleAddTodo = ({ title }) => {
+    const newTodo = {
+      id: crypto.randomUUID(),
+      title,
+      completed: false
+    }
+
+    const newTodoList = [...todoList, newTodo]
+    setTodoList(newTodoList)
+  }
+
   return (
     <>
       <div className="app">
-        <h1>todos</h1>
+        <h1 className='page-title'>
+          <a href="/">todos</a>
+        </h1>
         <div className="todo-container">
-          <div className="todo-header">
-            <TodoTabs todoList={todoList} />
-            <NewTodo onToggleAll={handleToggleAll}/>
-          </div>
-          <span>Showing all ({todoList.length})</span>
+          <TodoHeader
+            activeCount={activeCount}
+            filterSelected={filterSelected}
+            handleFilterChange={handleFilterChange}
+            onToggleAll={handleToggleAll}
+            onRemoveAllCompleted={handleRemoveAllCompleted}
+            onAddTodo={handleAddTodo}
+          />
           <TodoList
-            todoList={todoList}
+            todoList={filteredTodos}
             onRemoveTodo={handleRemove}
             onToggleCompleted={handleCompleted}
           />

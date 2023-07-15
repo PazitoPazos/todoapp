@@ -18,6 +18,19 @@ $text-color-dark: rgba(255, 255, 255, 0.57);
   -webkit-text-size-adjust: 100%;
 }
 
+a {
+  color: rgba(255, 255, 255, 0.87);
+  text-decoration: none;
+
+  &:active {
+    color: rgba(255, 255, 255, 0.37);
+  }
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.57);
+  }
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -36,6 +49,8 @@ input[type=checkbox] {
   background-color: rgba(85, 85, 85, 0);
   border: 0.2rem solid $text-color;
   border-radius: 0.2rem;
+  height: 2.2rem;
+  width: 2.2rem;
 
   &::before {
     content: "";
@@ -45,11 +60,20 @@ input[type=checkbox] {
     transform: scale(0);
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
-    /* Windows High Contrast Mode */
-    background-color: CanvasText;
+    background-color: rgba(255, 255, 255, 0.87);
+
   }
 
   &:checked::before {
     transform: scale(1);
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: rgba(255, 255, 255, 0.37);
+
+    &::before {
+      background-color: rgba(255, 255, 255, 0.37);
+    }
   }
 }
