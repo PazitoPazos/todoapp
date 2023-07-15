@@ -1,13 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.scss'
 import TodoList from './components/TodoList'
 import TodoHeader from './components/TodoHeader'
 
-const todos = [
-  { id: '1', title: 'Learn React', completed: true },
-  { id: '2', title: 'Learn CSS', completed: false },
-  { id: '3', title: 'Learn JavaScript', completed: false }
-]
+function saveTodosToLocalStorage (todos) {
+  localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+function recoverTodosFromLocalStorage () {
+  const todos = JSON.parse(localStorage.getItem('todos'))
+  return todos
+}
+
+let todos
+
+if (localStorage.getItem('todos')) {
+  todos = recoverTodosFromLocalStorage()
+}
 
 function App () {
   const [todoList, setTodoList] = useState(todos)
@@ -76,6 +85,10 @@ function App () {
     const newTodoList = [...todoList, newTodo]
     setTodoList(newTodoList)
   }
+
+  useEffect(() => {
+    saveTodosToLocalStorage(todoList)
+  }, [todoList])
 
   return (
     <>
